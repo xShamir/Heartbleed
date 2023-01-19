@@ -119,7 +119,7 @@ def commandHQ():
 
         if(conn.recv):
 
-            incoming_message = conn.recv(1024)
+            incoming_message = conn.recv(102400)
             incoming_message = incoming_message.decode()
             incoming_message = ast.literal_eval(incoming_message)
 
