@@ -77,6 +77,11 @@ def commandHQ():
 
         ans = False # Update github repo
 
+        if command == "clear" or command == "cl":
+            clear()
+            print(banner)
+            commandHQ()
+
         if command == "1":
             try:
                 dir_path = input(format + "Enter directory: ")
@@ -123,13 +128,13 @@ def commandHQ():
             incoming_message = incoming_message.decode()
             incoming_message = ast.literal_eval(incoming_message)
 
-            if(incoming_message[0] == "vfisd"): # 1
+            if incoming_message[0] == "vfisd": # 1
                 print(format + "Data received: {}".format(incoming_message[1]))
 
-            if(incoming_message[0] == "smbwm"): # 2
+            if incoming_message[0] == "smbwm": # 2
                 print(format + "Data received: {}".format(incoming_message[1]))
 
-            if(incoming_message[0] == "ewc"): # 3
+            if incoming_message[0] == "ewc": # 3
                 print(format + "Data received: {}".format(incoming_message[1]))
 
 clear()
