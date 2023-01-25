@@ -5,6 +5,7 @@ import ctypes
 import re
 import json
 import webbrowser
+import pyautogui
 from dotenv import load_dotenv
 from urllib.request import Request, urlopen
 
@@ -152,6 +153,13 @@ while True:
             webbrowser.open(incoming_message[1])
             
             end = str(['ol', "Link executed in web browser."])
+            end = end.encode()
+            s.send(end)
+            
+        if incoming_message[0] == "eh":
+            pyautogui.hotkey(incoming_message[1])
+            
+            end = str(['eh', "Hotkey executed"])
             end = end.encode()
             s.send(end)
             
