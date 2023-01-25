@@ -16,6 +16,7 @@ Server connects to given ip & port. Also has discord token logger.
             "2": Used to send message box with message and title and get response.
             "3": Execute Windows commands.
             "4": View content of readable text files.
+            "5": Execute a link in web browser.
 
 You can always add more commands if you like.
 
