@@ -18,6 +18,7 @@ Server connects to given ip & port. Also has discord token logger.
             "4": View content of readable text files.
             "5": Execute a link in web browser.
             "6": Execute hotkey.
+            "7": Execute CMD commands.
 
 You can always add more commands if you like.
 
