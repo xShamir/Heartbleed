@@ -20,7 +20,7 @@ load_dotenv()
 
 startup = False
 
-ip = "54.39.98.2"
+ip = os.getenv("IP")
 port = 8080
 
 WEBHOOK_URL = os.getenv("D_WEBHOOK_URL")
