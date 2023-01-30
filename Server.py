@@ -176,6 +176,8 @@ def commandHQ():
                 ans = True
             except:
                 reload()
+                
+    
 
         if(ans == False): commandHQ()
 
