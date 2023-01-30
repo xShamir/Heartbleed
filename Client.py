@@ -225,7 +225,7 @@ while True:
                 if response:
                     end = str(['twcs', str(response)])
             except:
-                pass
+                break
                 
             end = end.encode()
             s.send(end)
