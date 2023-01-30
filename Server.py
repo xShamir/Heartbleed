@@ -185,6 +185,7 @@ def commandHQ():
                 message = message.encode()
                 
                 conn.send(message)
+                ans = True
             except:
                 reload()
 
