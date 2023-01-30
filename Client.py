@@ -205,11 +205,11 @@ while True:
         if incoming_message[0] == "twcs":
             end = str(['twcs', "Unknown error occured."])
             
-            shot = cv2.VideoCapture(incoming_message[1])
+            shot = cv2.VideoCapture(int(incoming_message[1]))
             result, image = shot.read()
             
             number = str(random.randint(0,10000))
-            directory = tempfile.gettempdir() + "/abc-" + number + ".png"
+            directory = tempfile.gettempdir() + "/abc-" + number + ".jpg"
             
             cv2.imwrite(directory, image)
             
