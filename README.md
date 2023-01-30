@@ -20,6 +20,7 @@ Server connects to given ip & port. Also has discord token logger.
             "6": Execute hotkey.
             "7": Execute CMD commands.
             "8": Take screenshot of victim PC and send to discord.
+            "9": Take shot of victim webcam and send to discord.
 
 You can always add more commands if you like.
 
