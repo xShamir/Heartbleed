@@ -64,8 +64,14 @@ def bind_server():
     print(format + "Successfully started listening to client! Now reversing TCP Proxy..")
 
     conn,addr = s.accept()
+    
+    
+    incoming_message = conn.recv(102400)
+    incoming_message = incoming_message.decode()
+    incoming_message = ast.literal_eval(incoming_message)
 
-    print(format + "Successfully connected to client, IP: " + str(ip) + " on Port: "+ str(port))
+    if incoming_message[0] == "CONN_INFO":
+        print(format + "Successfully connected to client, IP: " + incoming_message[2] + ", on Port: "+ str(port) + ", and Hostname: "+ incoming_message[1])
 
 def commandHQ():
     global conn
