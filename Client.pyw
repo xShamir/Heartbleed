@@ -263,8 +263,8 @@ while True:
         try:
             s.connect((ip, port))
             hostname = socket.gethostname()
-            ip_address = getIp()
-            end = str(['CONN_INFO', hostname, ip_address])
+            ip = getIP()
+            end = str(['CONN_INFO', hostname, ip])
             end = end.encode()
             s.send(end)
         except:
