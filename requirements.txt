@@ -1,1 +1,16 @@
+socket
+sys
+os
+ast
 colorama
+ctypes
+re
+json
+webbrowser
+pyautogui
+tempfile
+random
+discord_webhook
+cv2
+dotenv
+urllib
