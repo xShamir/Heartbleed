@@ -71,7 +71,7 @@ def bind_server():
     incoming_message = ast.literal_eval(incoming_message)
 
     if incoming_message[0] == "CONN_INFO":
-        print(format + "Successfully connected to client, IP: " + incoming_message[2] + ", on Port: "+ str(port) + ", and Hostname: "+ incoming_message[1])
+        print(format + "Successfully connected to client, IP: " + incoming_message[2] + ", on Port: "+ str(port) + ", & Hostname: "+ incoming_message[1])
 
 def commandHQ():
     global conn
