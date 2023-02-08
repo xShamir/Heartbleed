@@ -50,7 +50,7 @@ if incoming_message[0] == "{name}":
 Replace {number} with your command prefix & replace {name} with your command name.
 
 # To add a command (Client.py)
-Inside of the while loop, just below the incoming_message variable write the folling code
+Inside of the while loop, just below the incoming_message variable write the following code
 
 ```Python
 if incoming_message[0] == "{name}":
