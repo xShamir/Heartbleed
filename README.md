@@ -70,4 +70,4 @@ Replace {name} with your command name and make sure to set variable code's value
 # The End.
 
 That's the end!
-aaaa
+aaa
