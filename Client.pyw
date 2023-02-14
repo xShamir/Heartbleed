@@ -268,4 +268,4 @@ while True:
             end = end.encode()
             s.send(end)
         except:
-            reset()aaaa
+            reset()aaa
