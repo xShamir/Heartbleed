@@ -249,4 +249,4 @@ def commandHQ():
 clear()
 print(banner)
 bind_server()
-commandHQ()aaaa
+commandHQ()
