@@ -13,4 +13,4 @@ random
 discord_webhook
 cv2
 dotenv
-urllib
+urlliba
