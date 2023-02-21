@@ -31,7 +31,7 @@ PING = True
 # END OF CONFIG
 
 def reset():
-    global sa
+    global s
     
     s = socket.socket()
     
